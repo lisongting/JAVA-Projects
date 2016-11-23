@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;pet&apos; to &apos;Per&apos;&#x0D;&#x0A;- Original project: &apos;ListDemo&apos;&#x0D;&#x0A;- Original element: &apos;pet&apos;&#x0D;&#x0A;- Renamed element: &apos;Per&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;pet&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{pet.java[pet" matchStrategy="1" name="Per" qualified="false" references="true" similarDeclarations="false" stamp="1467681616514" textual="false" version="1.0"/>
+</session>
