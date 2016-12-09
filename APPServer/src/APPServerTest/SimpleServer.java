@@ -1,7 +1,9 @@
 package APPServerTest;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -12,9 +14,18 @@ public class SimpleServer {
 		ServerSocket ss = new ServerSocket(30000);
 		while (true){
 			Socket s  = ss.accept();
-			OutputStream os = s.getOutputStream();
-			os.write("收到来自服务器的问候<国庆快乐>".getBytes("utf-8"));
-			os.close();
+//			OutputStream os = s.getOutputStream();
+//			os.write("收到来自服务器的问候<国庆快乐>".getBytes("utf-8"));
+//			os.close();
+			InputStream inputStream =  s.getInputStream();
+			InputStreamReader inputSReader = new InputStreamReader(inputStream);
+			BufferedReader reader = new BufferedReader(inputSReader);
+			String ip = s.getInetAddress().toString();
+			String tmp ;
+			System.out.println(ip);
+			while((tmp=reader.readLine())!=null){
+				System.out.println("app发来的消息："+tmp+",app的ip是+"+ip);;
+			}
 			s.close();
 		}
 	}
