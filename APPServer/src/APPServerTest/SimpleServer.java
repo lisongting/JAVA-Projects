@@ -1,33 +1,62 @@
 package APPServerTest;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class SimpleServer {
-
-	public static void main(String[] args)throws IOException {
-		// TODO Auto-generated method stub
+	private JSONArray jsonArray;
+	public void startServer()throws Exception{
+		InetAddress inetAddress =InetAddress.getLocalHost();
 		ServerSocket ss = new ServerSocket(30000);
+		System.out.println("Serverå·²å¯åŠ¨");
 		while (true){
 			Socket s  = ss.accept();
-//			OutputStream os = s.getOutputStream();
-//			os.write("ÊÕµ½À´×Ô·şÎñÆ÷µÄÎÊºò<¹úÇì¿ìÀÖ>".getBytes("utf-8"));
-//			os.close();
-			InputStream inputStream =  s.getInputStream();
-			InputStreamReader inputSReader = new InputStreamReader(inputStream);
-			BufferedReader reader = new BufferedReader(inputSReader);
+			System.out.println("å·²è¿æ¥ä¸€ä¸ªå®¢æˆ·ç«¯,æ¥å…¥æ—¶é—´ï¼š"+getTime());
 			String ip = s.getInetAddress().toString();
-			String tmp ;
-			System.out.println(ip);
-			while((tmp=reader.readLine())!=null){
-				System.out.println("app·¢À´µÄÏûÏ¢£º"+tmp+",appµÄipÊÇ+"+ip);;
+			System.out.println("å®¢æˆ·ç«¯ipåœ°å€æ˜¯ï¼š"+ip);
+			DataInputStream dis =  new DataInputStream(s.getInputStream());
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			byte[] by = new byte[4096];
+			int hasRead;
+			while((hasRead = dis.read(by))!=-1){
+				baos.write(by,0,hasRead);
+			}
+			String strInputstream = new String(baos.toByteArray());
+			System.out.println("æ¥æ”¶åˆ°jsonæ•°æ®çš„é•¿åº¦æ˜¯ï¼š"+strInputstream.length());
+			jsonArray = new JSONArray(strInputstream);
+			int length = jsonArray.length();
+			System.out.println("é€šè®¯å½•ä¸­è”ç³»äººå…±æœ‰ï¼š"+length+"ä½ã€‚");
+			for(int i=0;i<length;i++){
+				JSONObject jsonObj = null;
+				jsonObj = jsonArray.getJSONObject(i);
+				String name = (String) jsonObj.getString("name");
+				String phone = (String)jsonObj.get("phone");
+				System.out.print("nameï¼š"+name+"  phoneï¼š"+phone);
+				System.out.println();
 			}
 			s.close();
 		}
 	}
-
+	public static void main(String[] args){
+		SimpleServer server = new SimpleServer();
+		try{
+			server.startServer();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	public String getTime(){
+		Date date = new Date();
+		SimpleDateFormat sdf  = new SimpleDateFormat("yyyy--MM--dd HH:mm:ss");
+		String str = sdf.format(date);
+		return str;
+	}
 }
