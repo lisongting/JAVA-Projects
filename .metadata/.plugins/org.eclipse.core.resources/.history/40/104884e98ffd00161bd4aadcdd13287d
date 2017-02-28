@@ -1,0 +1,21 @@
+package list;
+
+public class DoubleLinkList<T> {
+
+	private class Node{
+		private T data;
+		private Node prev;
+		private Node next;
+		public Node(){};
+		public Node(T data,Node prev,Node next){
+			this.data = data;
+			this.prev = prev;
+			this.next = next;
+		}
+	}
+	public static void main(String[] args) {
+		
+
+	}
+
+}

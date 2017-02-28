@@ -1,0 +1,34 @@
+package list;
+
+public class SequenceList<T> {
+	private int DEFAULT_SIZE = 16;
+	private int capacity;
+	private Object[] elementData;
+	private int size = 0;
+	public SequenceList(){
+		capacity = DEFAULT_SIZE;
+		elementData = new Object[capacity];
+	}
+	public SequenceList(T element){
+		this();
+		elementData[0] = element;
+		size ++;
+	}
+	//初始化第一个元素，以指定大小创建List
+	public SequenceList(T element,int initSize){
+		capacity = 1;
+		//把capacity设为大于initSize的数，并且为2的n次方
+		while(capacity < initSize){
+			capacity = capacity * 2;
+		}
+		elementData = new Object[capacity];
+		elementData[0] = element;
+		size++;
+	}
+	public int length(){
+		return size;
+	}
+	public T get(int index){
+		
+	}
+}
