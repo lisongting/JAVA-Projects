@@ -1,7 +1,7 @@
 package list;
 
 import java.util.Arrays;
-
+//线性表
 public class SequenceList<T> {
 	private int DEFAULT_SIZE = 16;
 	private int capacity;
