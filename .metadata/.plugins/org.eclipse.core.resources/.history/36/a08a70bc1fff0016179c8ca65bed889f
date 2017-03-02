@@ -1,0 +1,27 @@
+package binarytree;
+//二叉排序树，也叫二叉搜索树
+public class BinarySerchTree<T> {
+	private class Node{
+		T data;
+		Node left;
+		Node right;
+		public Node(){};
+		public Node(T element){
+			this.data = element;
+		}
+		public Node(T element,Node left,Node right){
+			this(element);
+			this.left = left;
+			this.right = right;
+		}
+	}
+	private Node root;
+	public BinarySearchTree(){
+		root = null;
+	};
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

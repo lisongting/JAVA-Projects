@@ -1,11 +1,10 @@
-package ¶ş²æÊ÷;
+package äºŒå‰æ ‘;
 
 import java.util.ArrayDeque;
-import java.util.Queue;
 import java.util.Stack;
 
 /**
- * ¶ş²æËÑË÷Ê÷
+ * äºŒå‰æœç´¢æ ‘
  * @author LST
  *
  */
@@ -19,18 +18,18 @@ public class IntBST {
 		System.out.println(p.key+" ");
 	}
 	
-	//²åÈë½Úµã
+	//æ’å…¥èŠ‚ç‚¹
 	public void insert(int el){
 		IntBSTNode p = root,prev = null;
-		while(p!=null){//ÕÒµ½Ò»¸öºÏÊÊµÄÎ»ÖÃ´æ·Å½Úµã
-			prev = p;//ÓÃprevÀ´±ê¼ÇºÏÊÊµÄÎ»ÖÃ
+		while(p!=null){//æ‰¾åˆ°ä¸€ä¸ªåˆé€‚çš„ä½ç½®å­˜æ”¾èŠ‚ç‚¹
+			prev = p;//ç”¨prevæ¥æ ‡è®°åˆé€‚çš„ä½ç½®
 			if(p.key<el)
 				p = p.right;
 			else
-				p = p.left;//Ğ¡ÓÚ»òµÈÓÚ½ÚµãµÄÖµ¶¼·ÅÔÚ×ó±ß
+				p = p.left;//å°äºæˆ–ç­‰äºèŠ‚ç‚¹çš„å€¼éƒ½æ”¾åœ¨å·¦è¾¹
 		}
 		if(root==null)
-			root = new IntBSTNode(el);//Èç¹ûÊÇ¿ÕÊ÷
+			root = new IntBSTNode(el);//å¦‚æœæ˜¯ç©ºæ ‘
 		else if(prev.key<el)
 			prev.right = new IntBSTNode(el);
 		else 
@@ -38,7 +37,7 @@ public class IntBST {
 			
 	}
 	
-	//²éÕÒ½Úµã
+	//æŸ¥æ‰¾èŠ‚ç‚¹
 	public IntBSTNode search(IntBSTNode proot,int e){
 		while(proot!=null){
 			if(e == proot.key)
@@ -51,17 +50,17 @@ public class IntBST {
 		return null;
 	}
 	
-	//¹ã¶ÈÓÅÏÈ±éÀú
+	//å¹¿åº¦ä¼˜å…ˆéå†
 	public void breadthFirst(){
 		IntBSTNode p = root;
 		ArrayDeque queue = new ArrayDeque();
 		if(p!=null){
-			queue.offer(p);//½ø¶ÓÁĞ
+			queue.offer(p);//è¿›é˜Ÿåˆ—
 			while(!queue.isEmpty()){
-				p = (IntBSTNode) queue.poll();//³ö¶ÓÁĞ
+				p = (IntBSTNode) queue.poll();//å‡ºé˜Ÿåˆ—
 				visit(p);
 				if(p.left!=null){
-					queue.offer(p.left);//°Ñ×óÓÒ·Ö±ğ¼ÓÈëµ½¶ÓÁĞÖĞ
+					queue.offer(p.left);//æŠŠå·¦å³åˆ†åˆ«åŠ å…¥åˆ°é˜Ÿåˆ—ä¸­
 				}
 				if(p.right!=null){
 					queue.offer(p.right);
@@ -72,7 +71,7 @@ public class IntBST {
 	}
 	
 	
-	//Éî¶ÈÓÅÏÈ±éÀú:ÏÈĞò±éÀú
+	//æ·±åº¦ä¼˜å…ˆéå†:å…ˆåºéå†
 	public void preorder(IntBSTNode p){
 		if(p!=null){
 			visit(p);
@@ -80,7 +79,7 @@ public class IntBST {
 			preorder(p.right);
 		}
 	}
-	//[ÖØÒª]ÏÈĞò±éÀúµÄ·Çµİ¹éÊµÏÖ??
+	//[é‡è¦]å…ˆåºéå†çš„éé€’å½’å®ç°??
 	public void iterativePreorder(){
 		IntBSTNode p = root;
 		Stack travStack = new Stack();
@@ -92,11 +91,11 @@ public class IntBST {
 				if(p.right!=null)
 					travStack.push(p.right);
 				if(p.left!=null)
-					travStack.push(p.left);//×ó½Úµãºó·ÅÈë£¬ÒÔ±£Ö¤×ó½Úµã±ÈÓÒ½ÚµãÏÈ³öÕ»
+					travStack.push(p.left);//å·¦èŠ‚ç‚¹åæ”¾å…¥ï¼Œä»¥ä¿è¯å·¦èŠ‚ç‚¹æ¯”å³èŠ‚ç‚¹å…ˆå‡ºæ ˆ
 			}
 		}
 	}
-	//Éî¶ÈÓÅÏÈ±éÀú:ÖĞĞò±éÀú
+	//æ·±åº¦ä¼˜å…ˆéå†:ä¸­åºéå†
 	public void inorder(IntBSTNode p){
 		if(p!=null){
 			preorder(p.left);
@@ -104,30 +103,30 @@ public class IntBST {
 			preorder(p.right);
 		}
 	}
-	//[ÖØÒª]ÖĞĞò±éÀúµÄ·Çµİ¹éÊµÏÖ???
+	//[é‡è¦]ä¸­åºéå†çš„éé€’å½’å®ç°???
 	public void iterativeInorder(){
 		IntBSTNode p = root;
 		Stack travStack = new Stack();
-		while(p!=null){//Ææ¹ÖÕâÀïÎªÊ²Ã´ÒªÓÃwhile£¿
-			while(p!=null){//ÑØ×ÅrootÏò×óÏÂ·½Ïò×ß£¬Èç¹ûÓöµ½½ÚµãÓĞÓÒº¢×ÓÔò°ÑÓÒº¢×ÓÈëÕ»¡£ÓÒº¢×ÓÈëÕ»Ö®ºóÔÙ°Ñ±¾½ÚµãÈëÕ»
+		while(p!=null){//å¥‡æ€ªè¿™é‡Œä¸ºä»€ä¹ˆè¦ç”¨whileï¼Ÿ
+			while(p!=null){//æ²¿ç€rootå‘å·¦ä¸‹æ–¹å‘èµ°ï¼Œå¦‚æœé‡åˆ°èŠ‚ç‚¹æœ‰å³å­©å­åˆ™æŠŠå³å­©å­å…¥æ ˆã€‚å³å­©å­å…¥æ ˆä¹‹åå†æŠŠæœ¬èŠ‚ç‚¹å…¥æ ˆ
 				if(p.right!=null)
 					travStack.push(p.right);
 				travStack.push(p);
 				p = p.left;
 			}
-			p = (IntBSTNode )travStack.pop();//´ÓÕ»¶¥È¡³öÔªËØ£¬¸ÃÔªËØÒ»¶¨ÊÇÃ»ÓĞ×óº¢×ÓµÄ
+			p = (IntBSTNode )travStack.pop();//ä»æ ˆé¡¶å–å‡ºå…ƒç´ ï¼Œè¯¥å…ƒç´ ä¸€å®šæ˜¯æ²¡æœ‰å·¦å­©å­çš„
 			while(!travStack.isEmpty() && p.right==null){
-				visit(p);				//ÉÏÉÏÒ»²½È¡³öÁËÃ»ÓĞ×óº¢×ÓµÄ½Úµã£¬Èç¹û¸Ã½ÚµãÒ²Ã»ÓĞÓÒº¢×Ó£¬ËµÃ÷ÊÇÒ¶×Ó½Úµã£¬Ö±½Ó·ÃÎÊ
-				p = (IntBSTNode)travStack.pop();//·ÃÎÊÁËÖ®ºóÔÙ´Î³öÕ»
+				visit(p);				//ä¸Šä¸Šä¸€æ­¥å–å‡ºäº†æ²¡æœ‰å·¦å­©å­çš„èŠ‚ç‚¹ï¼Œå¦‚æœè¯¥èŠ‚ç‚¹ä¹Ÿæ²¡æœ‰å³å­©å­ï¼Œè¯´æ˜æ˜¯å¶å­èŠ‚ç‚¹ï¼Œç›´æ¥è®¿é—®
+				p = (IntBSTNode)travStack.pop();//è®¿é—®äº†ä¹‹åå†æ¬¡å‡ºæ ˆ
 			}
-			visit(p);//·ÃÎÊÕâ¸ö½Úµã£¬ËüÃ»ÓĞ×óº¢×Óµ«ÊÇÓĞÓÒº¢×ÓµÄ½Úµã
+			visit(p);//è®¿é—®è¿™ä¸ªèŠ‚ç‚¹ï¼Œå®ƒæ²¡æœ‰å·¦å­©å­ä½†æ˜¯æœ‰å³å­©å­çš„èŠ‚ç‚¹
 			if(!travStack.isEmpty())
-				p = (IntBSTNode)travStack.pop();//ÔÙ´Î³öÕ»
+				p = (IntBSTNode)travStack.pop();//å†æ¬¡å‡ºæ ˆ
 			else
 				p =null;
 		}
 	}
-	//Éî¶ÈÓÅÏÈ±éÀú:ºóĞò±éÀú
+	//æ·±åº¦ä¼˜å…ˆéå†:ååºéå†
 	public void postorder(IntBSTNode p){
 		if(p!=null){
 			preorder(p.left);
@@ -135,43 +134,43 @@ public class IntBST {
 			visit(p);
 		}
 	}	
-	//[ÖØÒª]ºóĞò±éÀúµÄ·Çµİ¹éÊµÏÖ??
+	//[é‡è¦]ååºéå†çš„éé€’å½’å®ç°??
 	public void iterativePostorder(){
-		IntBSTNode p = root,q=root;//¶¨ÒåÁ½¸ö¶¼Ö¸Ïò¸ú½ÚµãµÄÒıÓÃ,qÓÃÀ´±ê¼ÇÒÑ±»p·ÃÎÊ¹ıµÄ½Úµã
+		IntBSTNode p = root,q=root;//å®šä¹‰ä¸¤ä¸ªéƒ½æŒ‡å‘è·ŸèŠ‚ç‚¹çš„å¼•ç”¨,qç”¨æ¥æ ‡è®°å·²è¢«pè®¿é—®è¿‡çš„èŠ‚ç‚¹
 		Stack travStack = new Stack();
 		while(p!=null){
 			for(;p.left!=null;p= p.left)
-				travStack.push(p);//ÑØ×ÅrootÍù×óÏÂ·ÅÒÆ¶¯£¬°ÑËùÓĞ½ÚµãÑ¹ÈëÕ»
-			while(p!=null&&(p.right==null||p.right==q)){//ÔÚp²»Îª¿ÕÊ±£¬Èç¹ûÓÒº¢×ÓÎª¿Õ»òÕßÒÑ±»·ÃÎÊ¹ı£¬ÔòÖ±½Ó·ÃÎÊ¸Ã½Úµã
+				travStack.push(p);//æ²¿ç€rootå¾€å·¦ä¸‹æ”¾ç§»åŠ¨ï¼ŒæŠŠæ‰€æœ‰èŠ‚ç‚¹å‹å…¥æ ˆ
+			while(p!=null&&(p.right==null||p.right==q)){//åœ¨pä¸ä¸ºç©ºæ—¶ï¼Œå¦‚æœå³å­©å­ä¸ºç©ºæˆ–è€…å·²è¢«è®¿é—®è¿‡ï¼Œåˆ™ç›´æ¥è®¿é—®è¯¥èŠ‚ç‚¹
 				visit(p);
-				q= p;//·ÃÎÊÁËpÖ®ºó£¬ÓÃqÀ´±ê¼ÇpµÄÎ»ÖÃ
+				q= p;//è®¿é—®äº†pä¹‹åï¼Œç”¨qæ¥æ ‡è®°pçš„ä½ç½®
 				if(travStack.isEmpty())
 					return;
-				p = (IntBSTNode)travStack.pop();//pÏòÓÒÉÏ½Ç×ß
+				p = (IntBSTNode)travStack.pop();//på‘å³ä¸Šè§’èµ°
 			}
-			travStack.push(p);//´ÓÊ÷µÄ×óÏÂ½Ç£¬Íù¸ùµÄ·½Ïò×ß£¬°ÑÕâĞ©½ÚµãÈëÕ»£¬ÔÙÈ¥±éÀúÕâĞ©×ÓÊ÷µÄÓÒ°ë²¿·Ö
-			p = p.right;//pÍùÓÒ°ë²¿·Ö×ß
+			travStack.push(p);//ä»æ ‘çš„å·¦ä¸‹è§’ï¼Œå¾€æ ¹çš„æ–¹å‘èµ°ï¼ŒæŠŠè¿™äº›èŠ‚ç‚¹å…¥æ ˆï¼Œå†å»éå†è¿™äº›å­æ ‘çš„å³åŠéƒ¨åˆ†
+			p = p.right;//på¾€å³åŠéƒ¨åˆ†èµ°
 		}
 	}
 	
-	//###[ÖØÒª] MorrisÖĞĞò±éÀúËã·¨
-	//Õâ¸öËã·¨ÏÈ¶Ô¶ş²æÊ÷½øĞĞ½á¹¹×ª»»£¬µÈµ½±éÀúµÄ¹ı³ÌÖĞÔÙ½øĞĞ»Ö¸´
+	//###[é‡è¦] Morrisä¸­åºéå†ç®—æ³•
+	//è¿™ä¸ªç®—æ³•å…ˆå¯¹äºŒå‰æ ‘è¿›è¡Œç»“æ„è½¬æ¢ï¼Œç­‰åˆ°éå†çš„è¿‡ç¨‹ä¸­å†è¿›è¡Œæ¢å¤
 	public void MorrisInorder(){
 		IntBSTNode p = root,tmp;
 		while(p!=null){
-			if(p.left ==null){//µ±Õû¸ö¶ş²æÊ÷±»¹¹½¨³ÉÓÒµ¥ÏòÊ÷Ê±£¨ÓĞ»·Â·£©£¬ÏòÓÒÏÂ·½ÒÆ¶¯£¬·ÃÎÊÄÇĞ©Ã»ÓĞ×óº¢×ÓµÄ½Úµã£¬¼ÌĞøÍùÏÂÒÆ¶¯
+			if(p.left ==null){//å½“æ•´ä¸ªäºŒå‰æ ‘è¢«æ„å»ºæˆå³å•å‘æ ‘æ—¶ï¼ˆæœ‰ç¯è·¯ï¼‰ï¼Œå‘å³ä¸‹æ–¹ç§»åŠ¨ï¼Œè®¿é—®é‚£äº›æ²¡æœ‰å·¦å­©å­çš„èŠ‚ç‚¹ï¼Œç»§ç»­å¾€ä¸‹ç§»åŠ¨
 				visit(p);		
 				p = p.right;
 			}
-			else{//Èç¹ûÕâ¿Ã¶ş²æÊ÷»¹Ã»ÓĞ±»¹¹½¨³ÉÓÒµ¥ÏòÊ÷£¬Ôò¿ªÊ¼¹¹½¨
+			else{//å¦‚æœè¿™æ£µäºŒå‰æ ‘è¿˜æ²¡æœ‰è¢«æ„å»ºæˆå³å•å‘æ ‘ï¼Œåˆ™å¼€å§‹æ„å»º
 				tmp = p.left;
 				while(tmp.right!=null&&tmp.right!=p)
-					tmp = tmp.right;//Íù×ó·ÖÖ§×ß£¬ÕÒµ½Ã»ÓĞÓÒº¢×ÓµÄÄÇ¸ö¡°×îÓÒµÄ¡±½Úµã
+					tmp = tmp.right;//å¾€å·¦åˆ†æ”¯èµ°ï¼Œæ‰¾åˆ°æ²¡æœ‰å³å­©å­çš„é‚£ä¸ªâ€œæœ€å³çš„â€èŠ‚ç‚¹
 				if(tmp.right==null){
-					tmp.right = p;//°ÑÉÏÃæÕÒµ½µÄ½Úµã×÷ÎªÁ¬½ÓÊÜÌå£¬°Ñp·ÖÖ§Á¬½ÓÉÏÈ¥£¬È»ºópÏò×óÒÆ¶¯
+					tmp.right = p;//æŠŠä¸Šé¢æ‰¾åˆ°çš„èŠ‚ç‚¹ä½œä¸ºè¿æ¥å—ä½“ï¼ŒæŠŠpåˆ†æ”¯è¿æ¥ä¸Šå»ï¼Œç„¶åpå‘å·¦ç§»åŠ¨
 					p = p.left;
 				}
-				else {//¶Ô¹¹½¨ºÃµÄÓÒµ¥ÏòÊ÷½øĞĞ±éÀúºÍĞÎ×´»Ö¸´
+				else {//å¯¹æ„å»ºå¥½çš„å³å•å‘æ ‘è¿›è¡Œéå†å’Œå½¢çŠ¶æ¢å¤
 					visit(p);
 					tmp.right=null;
 					p = p.right;
@@ -180,10 +179,10 @@ public class IntBST {
 		}
 	}
 	
-	//[ÖØÒª]¹é²¢É¾³ı
+	//[é‡è¦]å½’å¹¶åˆ é™¤
 	public void deleteByMerging(int el){
 		IntBSTNode tmp,node,p= root,prev = null;
-		while(p!=null&&p.key!=el){//ÕÒµ½elËùÔÚµÄ½Úµã
+		while(p!=null&&p.key!=el){//æ‰¾åˆ°elæ‰€åœ¨çš„èŠ‚ç‚¹
 			prev = p;
 			if(p.key<el)
 				p = p.right;
@@ -211,15 +210,15 @@ public class IntBST {
 				prev.right = node;
 		}
 		else if (root!=null)
-			System.out.println("Ä¿±ê½Úµã²»ÔÚÊ÷ÖĞ");
+			System.out.println("ç›®æ ‡èŠ‚ç‚¹ä¸åœ¨æ ‘ä¸­");
 		else
-			System.out.println("Ê÷ÊÇ¿ÕÊ÷");
+			System.out.println("æ ‘æ˜¯ç©ºæ ‘");
 	}
 	
-	//[ÖØÒª]¸´ÖÆÉ¾³ı
+	//[é‡è¦]å¤åˆ¶åˆ é™¤
 	public void deleteByCopying(int el){
 		IntBSTNode  node ,p=root,prev = null;
-		while(p!=null&&p.key!=el){//ÔÚÕâ¸öÑ­»·ÖĞÕÒµ½ÒªÉ¾³ı½ÚµãËùÔÚµÄÎ»ÖÃ
+		while(p!=null&&p.key!=el){//åœ¨è¿™ä¸ªå¾ªç¯ä¸­æ‰¾åˆ°è¦åˆ é™¤èŠ‚ç‚¹æ‰€åœ¨çš„ä½ç½®
 			prev = p;
 			if(p.key<el)
 				p = p.right;
@@ -228,19 +227,19 @@ public class IntBST {
 		}
 		node = p;
 		if(p!=null&&p.key==el){
-			if(node.right==null)//Èç¹û¸Ã½ÚµãÃ»ÓĞÓÒº¢×Ó
+			if(node.right==null)//å¦‚æœè¯¥èŠ‚ç‚¹æ²¡æœ‰å³å­©å­
 				node = node.left;
-			else if(node.left==null)//Èç¹û¸Ã½ÚµãÃ»ÓĞ×óº¢×Ó
+			else if(node.left==null)//å¦‚æœè¯¥èŠ‚ç‚¹æ²¡æœ‰å·¦å­©å­
 				node = node.right;
-			else{//Èç¹û¸Ã½ÚµãÓĞ×óÓÒº¢×Ó
+			else{//å¦‚æœè¯¥èŠ‚ç‚¹æœ‰å·¦å³å­©å­
 				IntBSTNode tmp = node.left;
 				IntBSTNode previous = node;
-				while(tmp.right!=null){//ÕÒµ½node×ó×ÓÊ÷ÖÖ×î´óµÄ½Úµã£¬Ò²¾ÍÊÇnode×ó×ÓÊ÷ÖĞ×îÓÒµÄ½Úµã
+				while(tmp.right!=null){//æ‰¾åˆ°nodeå·¦å­æ ‘ç§æœ€å¤§çš„èŠ‚ç‚¹ï¼Œä¹Ÿå°±æ˜¯nodeå·¦å­æ ‘ä¸­æœ€å³çš„èŠ‚ç‚¹
 					previous = tmp;
 					tmp = tmp.right;
 				}
-				node.key =  tmp.key;//½øĞĞÖµÌæ»»
-				if(previous ==node)//Èç¹ûnode½Úµã×óº¢×ÓµÄÓÒ×ÓÊ÷Îª¿Õ
+				node.key =  tmp.key;//è¿›è¡Œå€¼æ›¿æ¢
+				if(previous ==node)//å¦‚æœnodeèŠ‚ç‚¹å·¦å­©å­çš„å³å­æ ‘ä¸ºç©º
 					previous.left = tmp.left;
 				else
 					previous.right=tmp.left;
@@ -254,8 +253,8 @@ public class IntBST {
 				prev.right = node;
 		}
 		else if(root!=null)
-			System.out.println("ÔªËØ"+el+"ÔÚ¸ÃÊ÷ÖĞ²»´æÔÚ");
+			System.out.println("å…ƒç´ "+el+"åœ¨è¯¥æ ‘ä¸­ä¸å­˜åœ¨");
 		else
-			System.out.println("ÕâÊÇÒ»¿Ã¿ÕÊ÷");
+			System.out.println("è¿™æ˜¯ä¸€æ£µç©ºæ ‘");
 	}
 }
