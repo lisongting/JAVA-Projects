@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
-import binarytree.BinaryTree.Node;
 
 //二叉排序树，也叫二叉搜索树（存放整数，也可存放其他对象，
 //只要能进行某种性质上的大小比较）

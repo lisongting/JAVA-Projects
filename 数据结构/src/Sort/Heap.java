@@ -3,33 +3,33 @@ package Sort;
 public class Heap {
 	void heapSort(int[] data){
 		for(int i=data.length/2-1;i>=0;i--)
-			moveDown(data,i,data.length-1);//Ê×ÏÈ½«Êı×é¹¹½¨³ÉÒ»¸ö¶Ñ
-		//½ÓÏÂÀ´ÔÙ½øĞĞ¶ÑÅÅĞò
+			moveDown(data,i,data.length-1);//é¦–å…ˆå°†æ•°ç»„æ„å»ºæˆä¸€ä¸ªå †
+		//æ¥ä¸‹æ¥å†è¿›è¡Œå †æ’åº
 		for(int i=data.length-1;i>=1;i--){
 			int tmp = data[0];
 			data[0] = data[i];
-			data[i] = tmp;//½«Ä©Î²ÔªËØÓë¶¥²¿ÔªËØ½»»»
-			//½øĞĞ¶ÑÅÅĞò
+			data[i] = tmp;//å°†æœ«å°¾å…ƒç´ ä¸é¡¶éƒ¨å…ƒç´ äº¤æ¢
+			//è¿›è¡Œå †æ’åº
 			moveDown(data,0,i-1);
 		}
 		
 	}
-	//Ã¿Ò»´ÎmoveDown¶¼»á°Ñ¶ÑÖĞ×î´óµÄÄÇ¸öÔªËØÌô³öÀ´·Åµ½¶Ñ¶¥
+	//æ¯ä¸€æ¬¡moveDownéƒ½ä¼šæŠŠå †ä¸­æœ€å¤§çš„é‚£ä¸ªå…ƒç´ æŒ‘å‡ºæ¥æ”¾åˆ°å †é¡¶
 	public void moveDown(int[] data,int first,int last){
 		int largest = first*2+1;
 		while(largest<=last){
 			if(largest<last && data[largest]<data[largest+1])
-				largest++;   //±ê¼Ç×óÓÒº¢×ÓÖĞ½Ï´óµÄÄÇ¸ö
-			if(data[first]<data[largest]){//½«µ±Ç°½ÚµãµÄÖµÓë½Ï´óµÄº¢×ÓÖµ½øĞĞ½»»»
+				largest++;   //æ ‡è®°å·¦å³å­©å­ä¸­è¾ƒå¤§çš„é‚£ä¸ª
+			if(data[first]<data[largest]){//å°†å½“å‰èŠ‚ç‚¹çš„å€¼ä¸è¾ƒå¤§çš„å­©å­å€¼è¿›è¡Œäº¤æ¢
 				int tmp;
 				tmp = data[largest];
 				data[largest] = data[first];
 				data[first] = tmp;
 				
 				first = largest;
-				largest = first*2+1;//¼ÌĞøÍùÏÂÒÆ¶¯
+				largest = first*2+1;//ç»§ç»­å¾€ä¸‹ç§»åŠ¨
 			}
-			else break;//Èç¹û¸Ã½ÚµãÒÑ¾­±ÈÁ½¸öº¢×Ó´ó£¬ÔòÌø³öÑ­»·
+			else break;//å¦‚æœè¯¥èŠ‚ç‚¹å·²ç»æ¯”ä¸¤ä¸ªå­©å­å¤§ï¼Œåˆ™è·³å‡ºå¾ªç¯
 		}
 	}
 	public static void main(String[] args){
