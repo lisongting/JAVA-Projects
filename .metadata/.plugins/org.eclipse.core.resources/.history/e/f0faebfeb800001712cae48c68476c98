@@ -1,0 +1,40 @@
+package sort;
+
+import java.util.Arrays;
+
+/**
+ * 归并排序
+ * 时间复杂度：O(nlogn)^2 
+ * 空间复杂度:O(1)
+ * 稳定性：稳定
+ * [分析]
+ * @author Administrator
+ */
+public class MergeSort {
+
+	
+	//left是待排序数组的第一个位置索引，right是最后一个位置索引
+	public static void mergeSort(int[] array,int left,int right){
+		if(left+1<right){
+			int mid = (left+right)/2;
+			//分别对左右进行递归调用
+			mergeSort(array,left,mid);
+			mergeSort(array,mid,right);
+			//进行归并操作
+			merge(array,left,mid,right);
+		}
+	}
+	
+	//mid是左数组中的最后一个元素索引，mid+1是右数组中的第一个元素索引
+	public static void merge(int[] array,int left,int mid,int right){
+		
+	}
+	public static void main(String[] args) {
+		int[] array = new int[]{9,5,23,2,0,21,30,13};
+		System.out.println("排序前：\n"+Arrays.toString(array));
+		System.out.println("开始排序：");
+		mergeSort(array);
+		System.out.println("排序后：\n"+Arrays.toString(array));
+	}
+
+}

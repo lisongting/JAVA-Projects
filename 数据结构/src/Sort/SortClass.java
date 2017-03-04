@@ -1,6 +1,7 @@
 package Sort;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 
 /**
  * 八种排序算法以及分析
@@ -38,6 +39,7 @@ public class SortClass {
 	
 	
 	//2插入排序********************************************************************
+	//[后记]这个代码是错的
 	public void InsertSort(){
 		for(int i=1,j;i<data.length;i++){
 			int cursor = data[i];//cursor从第二个元素依次向后面移动
@@ -45,6 +47,7 @@ public class SortClass {
 				data[j] = data[j-1];
 			}
 			data[j] = cursor;//最后把cursor放到正确的位置上
+			
 		}
 	}
 	//[分析]插入排序适用于数据量在1000以下的规模
