@@ -1,0 +1,50 @@
+package nowcode;
+
+public class Main10 {
+    public static boolean isNumeric(char[] str) {
+        if(str==null||str.length==0){
+        	return false;
+        }
+        boolean hasDot = false;
+        if(str[0]=='+'||str[0]=='-'||(str[0]>='0' &&str[0]<='9')){
+        	int len = str.length;
+        	for(int i=1;i<len;i++){
+        		if(str[i]>='0' && str[i]<='9'){
+        			if(i==len-1){
+        				return true;
+        			}
+        			continue;
+        			
+        		}else if(str[i]=='.' && !hasDot){//处理小数点
+        			if((str[i-1]>='0' &&str[i-1]<='9')&&(str[i+1]>='0' &&str[i+1]<='9')){
+        				continue;
+        			}
+        			hasDot = true;
+        		}else if(str[i]=='.'&&hasDot){
+        			return false;
+        		}else if(str[i]=='e' || str[i]=='E'){//处理E
+        			for(int j=i+1;j<len;j++){
+        				if(str[j]=='.'){
+        					return false;
+        				}
+        			}
+        		}else if(str[i]=='-'||str[i]=='+'){
+        			if(str[i-1]=='e'||str[i-1]=='E'){
+        				continue;
+        			}
+        			return false;
+        		}else{
+        			return false;
+        		}
+        	}
+        	
+        }
+        return false;
+        
+    }
+	public static void main(String[] args) {
+		String s = "1.2.3";
+			System.out.println(isNumeric(s.toCharArray()));
+	}
+
+}

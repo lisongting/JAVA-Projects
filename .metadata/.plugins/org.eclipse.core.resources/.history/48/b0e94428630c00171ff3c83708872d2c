@@ -1,0 +1,29 @@
+package nowcode;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main7 {
+	public class TreeNode {
+	    int val = 0;
+	    TreeNode left = null;
+	    TreeNode right = null;
+
+	    public TreeNode(int val) {
+	        this.val = val;
+
+	    }
+
+	}
+	private int depth=0;
+	public int TreeDepth(TreeNode root) {
+		Queue<TreeNode> queue = new ArrayDeque<>();
+        TreeNode current = 
+    }
+	public static void main(String[] args) {
+//    	 list1.removeAll(list2);
+//    	 System.out.println(list1.toString());
+//    	 System.out.println(list2.toString());
+	}
+
+}

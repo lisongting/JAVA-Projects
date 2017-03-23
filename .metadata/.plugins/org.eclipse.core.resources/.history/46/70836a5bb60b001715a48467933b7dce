@@ -1,0 +1,62 @@
+package nowcode;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main7 {
+	public class ListNode {
+	    int val;
+	    ListNode next = null;
+
+	    ListNode(int val) {
+	        this.val = val;
+	    }
+	}
+    public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {
+    	 ListNode cur1 = pHead1;
+    	 ListNode cur2 = pHead2;
+    	 int n1 = 0;
+    	 int n2 = 0;
+    	 List<Integer> list1 = new ArrayList<>(); 
+    	 List<Integer> list2 = new ArrayList<>(); 
+    	 while(cur1!=null){
+    		 list1.add(cur1.val);
+    		 cur1 = cur1.next;
+    		 n1++;
+    	 }
+    	 while(cur2!=null){
+    		 list2.add(cur2.val);
+    		 cur2 = cur2.next;
+    		 n2++;
+    	 }
+    	 if(n1>n2){
+    		 list1.removeAll(list2);    		 
+    		 
+    	 }else{
+    		 list2.remove(list1);
+    	 }
+    	 
+    }
+	public static void main(String[] args) {
+		 List<Integer> list1 = new ArrayList<>(); 
+    	 List<Integer> list2 = new ArrayList<>(); 
+    	 list1.add(1);
+    	 list1.add(2);
+    	 list1.add(3);
+    	 list1.add(4);
+    	 list1.add(5);
+    	 list1.add(6);
+    	 list1.add(7);
+    	 System.out.println(list1.toString());
+    	 list2.add(9);
+    	 list2.add(9);
+    	 list2.add(5);
+    	 list2.add(6);
+    	 list2.add(7);
+    	 System.out.println(list2.toString());
+    	 list1.retainAll(list2);
+    	 System.out.println(list1.toString());
+    	 System.out.println(list2.toString());
+	}
+
+}

@@ -1,0 +1,23 @@
+package nowcode;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main7 {
+	
+	public String PrintMinNumber(int [] numbers) {
+		int len = numbers.length;
+		
+    }
+	public static void main(String[] args) {
+		List<Integer> list = new ArrayList<>();
+		list.add(5);
+		list.add(9);
+		list.add(3);
+		System.out.println(list.toString());
+		list.remove(0);
+		System.out.println(list.get(1));
+		System.out.println(list.toString());
+	}
+
+}

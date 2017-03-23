@@ -1,0 +1,53 @@
+package nowcode;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Main10 {
+	char[] arr = new char[100];
+	int size =0;
+	Set<Character> bad = new HashSet<>();
+	//Insert one char from stringstream
+    public  void  Insert(char ch)
+    {
+        arr[size++] = ch;
+    }
+  //return the first appearence once char in current stringstream
+    public char FirstAppearingOnce()
+    {
+    	if(size==1){
+    		return arr[0];
+    	}
+    	for(int i=0;i < size-1;i++){
+    		if(bad.contains(arr[i])){
+    			continue;
+    		}
+			for(int j=i+1;j<size;j++){
+    			if(arr[i] == arr[j]){
+    				bad.add(arr[i]);
+    				break;
+    			}
+                if(j==(size-1) && arr[i]!=arr[j]){
+    				return arr[i];
+    			}
+    		}
+    	}
+    	return '#';
+    }
+	public static void main(String[] args) {
+		Main10 m = new Main10();
+		m.Insert('g');
+		System.out.println(m.FirstAppearingOnce());
+		m.Insert('o');
+		System.out.println(m.FirstAppearingOnce());
+		m.Insert('o');
+		System.out.println(m.FirstAppearingOnce());
+		m.Insert('g');
+		System.out.println(m.FirstAppearingOnce());
+		m.Insert('l');
+		System.out.println(m.FirstAppearingOnce());
+		m.Insert('e');
+		System.out.println(m.FirstAppearingOnce());
+	}
+
+}

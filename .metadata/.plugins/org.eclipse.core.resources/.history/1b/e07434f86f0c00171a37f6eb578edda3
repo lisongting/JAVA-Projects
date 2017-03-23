@@ -1,0 +1,38 @@
+package nowcode;
+
+import java.util.ArrayList;
+
+public class Main8 {
+	public static ArrayList<ArrayList<Integer> > FindContinuousSequence(int sum) {
+	       ArrayList<Integer> path = new ArrayList<>();
+	       ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+	       int sumCopy = sum;
+	       
+	       for(int i=1;i<sum;i++){
+	    	   for(int j=i;j<sum;j++){
+	    		   sumCopy = sumCopy-j;
+		    	   if(sumCopy>0){
+		    		   path.add(j);
+		    	   }else if(sumCopy < 0){
+		    		   path.remove(new Integer(j));
+		    		   break;
+		    	   }else if(sumCopy==0){
+		    		   ArrayList<Integer> pathCopy = (ArrayList<Integer>) path.clone();
+		    		   list.add(pathCopy);
+		    		   
+		    	   }
+	    	   }
+	    	   path.clear();
+	    	   sumCopy = sum;
+	    	   
+	       }
+	       return list;
+    }
+	public static void main(String[] args) {
+		ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+		list = FindContinuousSequence(100);
+		System.out.println(list.size());
+		System.out.println(list.toString());
+	}
+
+}

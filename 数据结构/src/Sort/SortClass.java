@@ -237,7 +237,7 @@ public class SortClass {
 			
 			for(int i=0;i<10;i++){
 				for(int j=0;j<array.length;j++){
-					System.out.print(temp[i][j]+" ");
+					System.out.print(temp[i][j]+"   ");
 				}
 				System.out.println();
 			}

@@ -1,8 +1,0 @@
-package stack;
-
-public class Snippet {
-	public static void main(String[] args) {
-		System.out.println("自底向上栈内的元素为："+stack.toString());
-	}
-}
-

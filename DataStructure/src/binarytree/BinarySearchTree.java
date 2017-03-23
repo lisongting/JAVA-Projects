@@ -185,10 +185,7 @@ public class BinarySearchTree {
 	}
 	//找到一个节点的父节点
 	public Node findParent(Node child){
-		if(child == null){
-			return null;
-		}
-		if(child == root){
+		if(child == null || child == root){
 			return null;
 		}
 		Node current = root;

@@ -1,0 +1,54 @@
+package nowcode;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Main10 {
+		
+ public class ListNode {
+	    int val;
+	    ListNode next = null;
+
+	    ListNode(int val) {
+	        this.val = val;
+	    }
+	}
+    public ListNode EntryNodeOfLoop(ListNode pHead)
+    {
+        ListNode cur = pHead;
+        
+        while(true){
+        	cur = pHead;
+        	ListNode tmp;
+        		
+        }
+    }
+    public int countArea(int[] A, int n) {
+    	int left=0,right=0;
+    	int max =0;
+    	for(int i=0;i<n;i++){
+    		left = 0;
+    		right = 0;
+    		for(int j=i;j<n;j++){
+    			if(A[j]>=A[i]){
+    				right++;
+    			}else{
+    				break;
+    			}
+    		}
+    		for(int j=i-1;j>=0;j--){
+    			if(A[j]>=A[i]){
+    				left++;
+    			}else{
+    				break;
+    			}
+    		}
+    		int area = (right+left)*A[i];
+    		max = area>max?area:max;
+    	}
+    	return max;
+    }
+	public static void main(String[] args) {
+	}
+
+}

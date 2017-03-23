@@ -1,0 +1,25 @@
+package nowcode;
+
+import java.util.Scanner;
+
+public class Main16 {
+
+	public static void main(String[] args) {
+		
+		System.out.println(-15%-5);
+		
+		Scanner sc = new Scanner(System.in);
+		int min = sc.nextInt();
+		int max = sc.nextInt();
+		int m = sc.nextInt();
+		int n = 0;
+		for(int i=min;i<=max;i++){
+			if(i % m==0){
+				n++;
+			}
+		}
+		System.out.println(n);
+		
+	}
+
+}

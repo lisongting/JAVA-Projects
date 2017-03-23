@@ -1,0 +1,21 @@
+package nowcode;
+
+import java.util.Collections;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.Stack;
+
+public class Main7 {
+	public ArrayList<String> Permutation(String str) {
+	       
+    }
+	public static void main(String[] args) {
+		Set<Integer> set = new HashSet<>();
+		set.add(4);
+		set.add(3)；
+		System.out.println(set.size());
+		set.add(4);
+		System.out.println(set.size());
+	}
+
+}

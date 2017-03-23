@@ -1,0 +1,76 @@
+package nowcode;
+
+import java.util.Arrays;
+import java.util.Stack;
+
+public class Main14 {
+	public boolean hasPath(char[] matrix, int rows, int cols, char[] str)
+	{
+		int index =0,t=0,i,j;
+		int len = str.length;
+		boolean hasPath = false;
+		char[][] square = new char[rows][cols];
+		int[][] arrive = new int[rows][cols];
+		Stack<String> stack = new Stack<>();
+		if(matrix==null||str==null){
+			return false;
+		}
+		//构造二维数组
+		for(i=0;i<rows;i++){
+			for(j=0;j<cols;j++){
+				square[i][j] = matrix[t++];
+			}
+		}
+		for(i=0;i<rows;i++){
+			for(j=0;j<cols;j++){
+				if(square[i][j]==str[index]){
+					//如果遇到第一个相等的，入栈
+					stack.push(new String(square[i][j]+","+i+","+j));
+					System.out.println(new String(square[i][j]+","+i+","+j));//test
+					index++;
+					while(!stack.isEmpty()){
+						//出栈，取出当前出栈元素的信息，和横纵坐标
+						String curString = stack.pop();
+						String[] arr = curString.split(",");
+						char cur = arr[0].charAt(0);
+						int curRow = Integer.parseInt(arr[1]);
+						int curCol = Integer.parseInt(arr[2]);
+						
+						if(curRow>=1){
+							char up = square[curRow-1][curCol];
+							//如果相等并且没有被走过
+							if(up == str[index] && arrive[curRow-1][curCol]!=1){
+								stack.push(new String(up+","+(curRow-1)+","+(curCol)));
+								arrive[curRow-1][curCol]=1;//走过的地方标记为1
+								index++;
+							}
+						}
+						if(curRow<=rows-2){
+							char down = square[curRow+1][curCol];
+						}
+						if(j>=1){
+							char left = square[curRow][curCol-1];
+							
+						}
+						if(j<=cols-2){
+							char right = square[curRow][curCol+1];
+							
+						}
+						if(index==str.length){
+							hasPath = true;
+							return hasPath;
+						}
+					}
+				}
+			}
+		}
+		
+		return hasPath;
+	}
+	public static void main(String[] args){
+		char c = 'f';
+		String str = new String(c+","+(3-6)+","+5);
+		System.out.println(str);
+		System.out.println(Arrays.toString(str.split(",")));
+	}
+}

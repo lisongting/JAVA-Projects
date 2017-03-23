@@ -1,0 +1,56 @@
+package nowcode;
+
+import java.util.Arrays;
+
+public class Main7 {
+	public class TreeNode {
+	    int val = 0;
+	    TreeNode left = null;
+	    TreeNode right = null;
+
+	    public TreeNode(int val) {
+	        this.val = val;
+
+	    }
+
+	}
+	public void FindNumsAppearOnce(int [] array,int num1[] , int num2[]) {
+		
+		Arrays.sort(array);
+		boolean first = true;
+		int tmp =0;
+        for(int i=0;i<array.length-1;i++){
+        	if(i==(array.length-2)){
+        		if(array[i]==array[i-1]){
+        			tmp = array[i+1];
+        		}
+        		if(array[i]==array[i+1]){
+        			tmp = array[i-1];
+        		}
+        		if(first){
+        			num1[0] = tmp;
+        		}else{
+        			num2[0] = tmp;
+        		}
+        	}
+    		if(array[i]==array[i+1]){
+        		i++;
+        		continue;
+        	}else if(i!=(array.length-2)){
+        		if(first){
+        			num1[0] = array[i];
+                    first = false;
+        		}else{
+        			num2[0] = array[i];
+        		}
+        	}
+        	
+        }
+        
+    }
+	public static void main(String[] args) {
+		int[] re = new int[]{};
+		int[]re2 = new int[]{};
+	}
+
+}

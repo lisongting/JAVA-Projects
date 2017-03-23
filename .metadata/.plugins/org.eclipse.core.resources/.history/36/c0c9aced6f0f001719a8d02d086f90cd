@@ -1,0 +1,41 @@
+package nowcode;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.LinkedList;
+
+public class Main13 {
+	public class TreeNode {
+	    int val = 0;
+	    TreeNode left = null;
+	    TreeNode right = null;
+
+	    public TreeNode(int val) {
+	        this.val = val;
+
+	    }
+
+	}
+	private int[] array = new int[]{};
+	int size = 0;
+	public void Insert(Integer num) {
+		    array[size++] = num;
+	}
+
+    public Double GetMedian() {
+    	double d;
+    	Arrays.sort(array);
+    	if(size%2==0){
+    		d = (double)(array[size/2]+array[size/2-1])/2.0;
+    	}else{
+    		d = (double)array[size/2];
+    	}
+    	return d;
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

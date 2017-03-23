@@ -1,0 +1,49 @@
+package nowcode;
+
+public class Main9 {
+	public static int StrToInt(String str) {
+	       if(str.length()==0|| str==null||str=="0"){
+	    	   return 0;
+	       } 
+	       char[] arr = str.toCharArray();
+	       for(int i=0;i<arr.length;i++){
+	    	   if(arr[i]>=48 && arr[i]<=57){
+	    		   continue;
+	    	   }else if(arr[0]==43 || arr[0]==45){
+	    		   continue;
+	    	   }else{
+	    		   return 0;
+	    	   }
+	       }
+	       int sum =0;
+	       int jie = 1;
+	       if(arr[0]=='+'){
+	    	   for(int i=arr.length-1;i>=1;i--){
+	    		   int t = (arr[i]-48)*jie;
+	    		   sum +=t;
+	    		   jie  = jie*10;
+	    	   }
+	    	   return sum;
+	       }else if(arr[0]=='-'){
+	    	   for(int i=arr.length-1;i>=1;i--){
+	    		   int t = (arr[i]-48)*jie;
+	    		   sum +=t;
+	    		   jie  = jie*10;
+	    	   }
+	    	   return -sum;
+	       }else{
+	    	   for(int i=arr.length-1;i>=0;i--){
+	    		   int t = (arr[i]-48)*jie;
+	    		   sum +=t;
+	    		   jie  = jie*10;
+	    	   }
+	    	   return sum; 
+	       }
+	}
+	public static void main(String[] args) {
+		System.out.println(StrToInt("+215364"));
+		
+
+	}
+
+}

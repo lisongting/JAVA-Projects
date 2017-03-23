@@ -1,0 +1,18 @@
+package nowcode;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Main7 {
+	
+	public ArrayList<String> Permutation(String str) {
+    }
+	public static void main(String[] args) {
+		String str ="abc";
+		System.out.println(str.substring(0,1));
+		System.out.println(str.substring(0,0));
+		System.out.println(str.substring(0,3));
+	}
+
+}

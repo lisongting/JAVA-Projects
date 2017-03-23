@@ -1,0 +1,22 @@
+package nowcode;
+
+public class Main10 {
+    public boolean isNumeric(char[] str) {
+        if(str==null||str.length==0){
+        	return false;
+        }
+        if(str[0]=='+'||str[0]=='-'||(str[0]>=48 &&str[0]<=47)){
+        	int len = str.length;
+        	for(int i=1;i<len;i++){
+        		if()
+        	}
+        }
+        return false;
+        
+    }
+	public static void main(String[] args) {
+		System.out.println(Integer.parseInt("-123"));
+
+	}
+
+}

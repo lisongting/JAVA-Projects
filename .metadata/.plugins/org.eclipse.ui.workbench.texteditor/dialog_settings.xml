@@ -2,15 +2,21 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="gap" key="selection"/>
-		<item value="false" key="casesensitive"/>
+		<item value="Node" key="selection"/>
+		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="true" key="wholeword"/>
 		<list key="findhistory">
+			<item value="Node"/>
+			<item value="k"/>
+			<item value="j"/>
 			<item value="h"/>
 		</list>
 		<list key="replacehistory">
+			<item value="TreeNode"/>
+			<item value="left"/>
+			<item value="right"/>
 			<item value="gap"/>
 		</list>
 	</section>

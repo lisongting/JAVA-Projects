@@ -1,0 +1,101 @@
+package nowcode;
+
+import java.util.Arrays;
+import java.util.Stack;
+
+public class Main14 {
+	public boolean hasPath(char[] matrix, int rows, int cols, char[] str)
+	{
+		int index =0,t=0,i,j;
+		int len = str.length;
+		boolean hasPath = false;
+		char[][] square = new char[rows][cols];
+		int[][] arrive = new int[rows][cols];
+		Stack<String> stack = new Stack<>();
+		if(matrix==null||str==null){
+			return false;
+		}
+		//构造二维数组
+		for(i=0;i<rows;i++){
+			for(j=0;j<cols;j++){
+				square[i][j] = matrix[t++];
+			}
+		}
+		for(i=0;i<rows;i++){
+			for(j=0;j<cols;j++){
+				if(square[i][j]==str[0]){
+					//如果遇到第一个相等的，入栈
+					stack.push(new String(square[i][j]+","+i+","+j));
+					System.out.println(new String(square[i][j]+","+i+","+j));//test
+					index++;
+					while(!stack.isEmpty()){
+						//出栈，取出当前出栈元素的信息，和横纵坐标
+						String curString = stack.pop();
+						String[] arr = curString.split(",");
+						char cur = arr[0].charAt(0);
+						int curRow = Integer.parseInt(arr[1]);
+						int curCol = Integer.parseInt(arr[2]);
+						//当出栈时，表示走一步,将arrive矩阵中相应位置坐标记
+						arrive[curRow][curCol]=1;
+						
+						int oldIndex = index;
+						if(curRow>=1){
+							char up = square[curRow-1][curCol];
+							//如果相等并且没有被走过
+							if(up == str[oldIndex] && arrive[curRow-1][curCol]!=1){
+								stack.push(new String(up+","+(curRow-1)+","+(curCol)));
+								index++;
+							}
+						}
+						if(curRow<=rows-2){
+							char down = square[curRow+1][curCol];
+							if(down == str[oldIndex] && arrive[curRow+1][curCol]!=1){
+								stack.push(new String(down+","+(curRow+1)+","+curCol));
+								index++;
+							}
+						}
+						if(curCol>=1){
+							char left = square[curRow][curCol-1];
+							if(left == str[oldIndex] && arrive[curRow][curCol-1]!=1){
+								stack.push(new String(left+","+curRow+","+(curCol-1)));
+								index ++;
+							}
+						}
+						if(curCol<=cols-2){
+							char right = square[curRow][curCol+1];
+							if(right == str[oldIndex] &&arrive[curRow][curCol+1]!=1){
+								stack.push(new String(right+","+curRow+","+(curCol+1)));
+								index++;
+							}
+						}
+						if(index==str.length){
+							hasPath = true;
+							return hasPath;
+						}
+						//如果index还是和oldIndex相等，则说明该条路走不通，即四周都与下一个元素不匹配
+						if(index == oldIndex){
+							//将arrive中的位置还原为0
+							arrive[curRow][curCol] = 0;
+						}
+							
+						
+					}//while end
+				}//if end
+				index = 0;
+			}//for i end
+		}// for j end
+		
+		return hasPath;
+	}
+	public static void main(String[] args){
+		Main14 m = new Main14();
+		char[] matrix = new char[]{'a','b','c','e','s','f','c','s','a','d','e','e'};
+		//char[] str = new char[]{'b','c','c','e','d'};
+		//char[] str = new char[]{'f','c','c','e','s','e','q','d','a'};
+		//char[] str = new char[]{'e','s','c','f','b','a'};
+		
+		//char[] str = new char[]{'a','b','c','b'};
+		char[] str = new char[]{'d','f','c','s','s'};
+		System.out.println(m.hasPath(matrix, 3, 4, str));
+	}
+}

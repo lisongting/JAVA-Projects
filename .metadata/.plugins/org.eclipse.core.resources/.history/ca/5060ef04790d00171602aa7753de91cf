@@ -1,0 +1,29 @@
+package nowcode;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Main10 {
+		
+ public class ListNode {
+	    int val;
+	    ListNode next = null;
+
+	    ListNode(int val) {
+	        this.val = val;
+	    }
+	}
+    public ListNode EntryNodeOfLoop(ListNode pHead)
+    {
+        ListNode cur = pHead;
+        
+        while(true){
+        	cur = pHead;
+        	ListNode tmp;
+        		
+        }
+    }
+	public static void main(String[] args) {
+	}
+
+}

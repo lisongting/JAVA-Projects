@@ -1,0 +1,47 @@
+package nowcode;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
+public class Main7 {
+	
+	public static String PrintMinNumber(int [] numbers) {
+		//用双栈来实现
+		//一个栈：顺序存放数组，另一个栈逆：序存放数组
+		int len = numbers.length;
+		Stack<Integer> stack = new Stack<>();
+		Stack<Integer> stackCopy = (Stack<Integer>) stack.clone();
+		Stack<Integer> reStack = new Stack<>();
+		Stack<Integer> restackCopy = (Stack<Integer>) stack.clone();
+		for(int i=0;i<len;i++){
+			stack.push(numbers[i]);
+			reStack.push(numbers[len-i-1]);
+		}
+		int minNum = Integer.MAX_VALUE;
+		StringBuilder sb = new StringBuilder("");
+		for(int i=0;i<len;i++){
+			//从stack中共出栈i次
+			for(int j=0;j<i;j++){
+				sb.append(stack.pop());
+			}
+			//从reStack中出栈len-i-1次
+			for(int k=0;k<len-i-1;){
+				sb.append(reStack.pop());
+			}
+			int tmp = Integer.getInteger(sb.toString());
+			if( tmp < minNum){
+				minNum = tmp;
+			}
+			stack = (Stack<Integer>) stackCopy.clone();
+			reStack = (Stack<Integer>)reStack.clone();
+			sb = new StringBuilder("");
+		}
+		return String.valueOf(minNum);
+    }
+	public static void main(String[] args) {
+		int[] arr = new int[]{3,5,1,4,2};
+		System.out.println(PrintMinNumber(arr));
+	}
+
+}

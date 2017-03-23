@@ -1,0 +1,25 @@
+package nowcode;
+
+import java.util.ArrayList;
+
+public class Main7 {
+	public int NumberOf1Between1AndN_Solution(int n) {
+		int count =0;
+		for(int i=0;i<=n;i++){
+			String tmp = String.valueOf(i); 
+			int len = tmp.length();
+			for(int j=0;j<len;j++){
+				if(tmp.charAt(j)=='1'){
+					count++;
+				}
+			}
+			
+		}
+		return count;
+	}
+	public static void main(String[] args) {
+		int i = 12345678;
+		System.out.println(new Integer(i).toString().length());
+	}
+
+}

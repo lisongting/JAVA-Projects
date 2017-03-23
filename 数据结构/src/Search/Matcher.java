@@ -92,7 +92,7 @@ public class Matcher {
 			return -1;
 		}
 		return 0;
-		
+		//写到一半实在费解不写了
 	}
 	//sunday算法*****************************************************************************
 	
@@ -102,10 +102,10 @@ public class Matcher {
 		int result;
 		ArrayList<Integer> al= new ArrayList<Integer>();
 		//result = new Matcher().NaiveStrMatch(pattern, text);
-		//result = new Matcher().KMPMatch(pattern, text);
-		al = new Matcher().SundayMatch(pattern, text);
-		System.out.println(al.get(1));
-		//System.out.println(result);
+		result = new Matcher().KMPMatch(pattern, text);
+		//al = new Matcher().SundayMatch(pattern, text);
+		//System.out.println(al.get(1));
+		System.out.println(result);
 		
 	}
 
